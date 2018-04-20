@@ -18,6 +18,9 @@ LABEL com.stackhpc.mlnx-ufm.version=$ufm_version
 # Set an environment variable to tell systemd it's running under Docker.
 ENV container=docker
 
+# Systemd does not terminate on SIGTERM.
+STOPSIGNAL SIGRTMIN+3
+
 # Create a yum repository file for OFED.
 ADD create-ofed-repo.sh /
 ENV ofed_repo_url=$ofed_repo_url
