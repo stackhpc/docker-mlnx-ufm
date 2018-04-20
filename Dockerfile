@@ -98,3 +98,6 @@ ADD mlnx-ufm-configure.service /usr/lib/systemd/system/
 
 # Configure UFM and UFM startup configuration script to run on startup.
 RUN systemctl enable ufmd mlnx-ufm-configure
+
+# Various systemd services aren't required in a container.
+RUN systemctl disable network openibd
