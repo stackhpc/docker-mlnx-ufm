@@ -53,5 +53,9 @@ One or more UFM licenses should be made available in a directory on the host
 running docker. The path to this directory should be set via
 ``$UFM_LICENSES_PATH``.
 
+It may be desirable to apply additional configuration to UFM prior to running
+the ufmd service. This can be done by setting ``$UFM_STARTUP_CONFIG_PATH`` to
+the path of a script.
+
 Run the ``run.sh`` script to create a Docker container. The container will be
 privileged, and use host networking.

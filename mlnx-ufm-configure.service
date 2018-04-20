@@ -1,0 +1,12 @@
+[Unit]
+Description=Mellanox UFM startup configuration
+After=network.target remote-fs.target nss-lookup.target
+Before=ufmd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mlnx-ufm-configure
+RemainAfterExit=yes
+
+[Install]
+WantedBy=ufmd.service

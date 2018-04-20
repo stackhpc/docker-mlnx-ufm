@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Bind mount a script here to perform customisation of UFM on startup.
+echo "mlnx-ufm-configure: No startup customisation applied"

@@ -88,5 +88,13 @@ RUN mv $(basename $ufm_tarball_url) /ufm.tgz \
 # Install UFM.
 RUN /ufm-${ufm_version}/install.sh -o ib
 
-# Configure UFM to run on startup.
-RUN systemctl enable ufmd
+# Add a noop startup configuration script. This can be customised by bind
+# mounting a script to /usr/bin/mlnx-ufm-configure.
+ADD mlnx-ufm-configure /usr/bin/mlnx-ufm-configure
+RUN chmod +x /usr/bin/mlnx-ufm-configure
+
+# Add a systemd unit for running the startup configuration script.
+ADD mlnx-ufm-configure.service /usr/lib/systemd/system/
+
+# Configure UFM and UFM startup configuration script to run on startup.
+RUN systemctl enable ufmd mlnx-ufm-configure
