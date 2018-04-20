@@ -61,6 +61,7 @@ RUN yum install -y \
 RUN yum install -y \
     net-tools \
     net-snmp-utils \
+    pyparsing \
     python-setuptools \
     which \
     && yum clean all
