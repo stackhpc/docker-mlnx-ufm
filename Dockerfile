@@ -12,6 +12,9 @@ ARG ufm_tarball_url
 # URL of OFED yum repo.
 ARG ofed_repo_url
 
+# Add a useful label.
+LABEL com.stackhpc.mlnx-ufm.version=$ufm_version
+
 # Set an environment variable to tell systemd it's running under Docker.
 ENV container=docker
 
