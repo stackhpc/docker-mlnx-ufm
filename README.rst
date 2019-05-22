@@ -59,3 +59,6 @@ the path of a script.
 
 Run the ``run.sh`` script to create a Docker container. The container will be
 privileged, and use host networking.
+
+Alternatively, use the `mlnx-ufm Ansible role
+<https://galaxy.ansible.com/stackhpc/mlnx-ufm>`__ to deploy the container.
