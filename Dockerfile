@@ -71,8 +71,6 @@ RUN yum install -y \
     which \
     && yum clean all
 
-
-
 # Install pip.
 RUN easy_install pip
 
