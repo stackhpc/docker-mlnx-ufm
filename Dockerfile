@@ -31,6 +31,11 @@ RUN /create-ofed-repo.sh \
 RUN yum install -y \
     mlnx-ofed-hpc \
     && yum clean all
+
+# Install latest version of php
+RUN yum install epel-release yum-utils -y &&\ 
+    yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
+    yum-config-manager --enable remi-php72 
     
 # Dependencies listed in UFM install guide.
 RUN yum install -y \
@@ -38,6 +43,7 @@ RUN yum install -y \
     mariadb \
     mariadb-server \
     MySQL-python \
+    php \
     net-snmp \
     net-snmp-libs \
     mod_ssl \
@@ -65,11 +71,7 @@ RUN yum install -y \
     which \
     && yum clean all
 
-# Install latest version of pip
-RUN yum install epel-release yum-utils -y \
-    yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
-    yum-config-manager --enable remi-php72 \
-    yum install php
+
 
 # Install pip.
 RUN easy_install pip
