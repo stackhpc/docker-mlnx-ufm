@@ -20,9 +20,15 @@ provided to rebuild the packages using a Docker container. Set the following
 environment variables to configure the script:
 
 * ``$KERNEL_VERSION``: optional kernel version to compile against
-* ``$UFM_VERSION``: required UFM software version
+* ``$UFM_VERSION``: required UFM software version, for example 5.9.6-8.el7.x86_64
 * ``$UFM_TARBALL_URL``: required UFM tarball URL
 * ``$UFM_COMPILE_IMAGE_TAG:``: optional UFM compilation image tag
+
+The script uses a centos:7 base container image. If this does not match the
+kernel running on the host, the build will fail. In this case, you could use
+an older image tag in the Dockerfile e.g. centos:7.7.1810. Due to the nature
+of the CentOS repos, you will probably need to disable the standard yum repos
+and enable the Vault repos for the version of CentOS in use.
 
 Building the Image
 ------------------
