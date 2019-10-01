@@ -15,7 +15,7 @@ ENV ufm_tarball_url=$ufm_tarball_url
 
 ADD $ufm_tarball_url /
 
-RUN tar -xzf /$(basename $ufm_tarball_url) \                                                                                                                                        │······················
+RUN tar -xzf /$(basename $ufm_tarball_url) \
     && rm /$(basename $ufm_tarball_url)
 
 # Buld UFM RPMs. Required if the following is seen during installation:
