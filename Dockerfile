@@ -12,6 +12,12 @@ ARG ufm_tarball_url
 # URL of OFED yum repo.
 ARG ofed_repo_url
 
+# Configure CentOS repositories.
+ARG centos_version
+ENV centos_version=$centos_version
+ADD centos-repos.sh /
+RUN /centos-repos.sh
+
 # Add a useful label.
 LABEL com.stackhpc.mlnx-ufm.version=$ufm_version
 

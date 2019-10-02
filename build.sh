@@ -10,6 +10,7 @@ ufm_version=${UFM_VERSION:?Set the UFM version via \$UFM_VERSION}
 ufm_tarball_url=${UFM_TARBALL_URL:?Set the UFM software tarball URL via \$UFM_TARBALL_URL}
 ofed_repo_url=${OFED_REPO_URL:?Set the OFED repo URL via \$OFED_REPO_URL}
 ufm_image_tag=${UFM_IMAGE_TAG:-mlnx-ufm}
+centos_version=${CENTOS_VERSION}
 
 cd $dir
 
@@ -18,5 +19,6 @@ docker build \
   -t $ufm_image_tag \
   --build-arg ufm_version=$ufm_version \
   --build-arg ufm_tarball_url=$ufm_tarball_url \
+  --build-arg centos_version=$centos_version \
   --build-arg ofed_repo_url=$ofed_repo_url \
   .

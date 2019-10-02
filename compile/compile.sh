@@ -11,6 +11,7 @@ kernel_version=${KERNEL_VERSION:-$(uname -r)}
 ufm_version=${UFM_VERSION:?Set the UFM software version via \$UFM_VERSION. Example: 5.9.6-8.el7.x86_64}
 ufm_tarball_url=${UFM_TARBALL_URL:?Set the UFM tarball URL via \$UFM_TARBALL_URL}
 ufm_compile_image_tag=${UFM_COMPILE_IMAGE_TAG:-mlnx-ufm-compile}
+centos_version=${CENTOS_VERSION}
 
 cd $dir
 
@@ -20,6 +21,7 @@ docker build \
   --build-arg kernel_version=$kernel_version \
   --build-arg ufm_version=$ufm_version \
   --build-arg ufm_tarball_url=$ufm_tarball_url \
+  --build-arg centos_version=$centos_version \
   .
 
 # Copy out the tarball from the image.
