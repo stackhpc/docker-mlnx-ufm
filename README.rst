@@ -20,9 +20,14 @@ provided to rebuild the packages using a Docker container. Set the following
 environment variables to configure the script:
 
 * ``$KERNEL_VERSION``: optional kernel version to compile against
-* ``$UFM_VERSION``: required UFM software version
+* ``$UFM_VERSION``: required UFM software version, for example 5.9.6-8.el7.x86_64
 * ``$UFM_TARBALL_URL``: required UFM tarball URL
 * ``$UFM_COMPILE_IMAGE_TAG:``: optional UFM compilation image tag
+
+The image uses a centos:7 base container image. If this does not match the
+kernel running on the host, the build will fail. In this case, you can
+configure Yum to use the CentOS Vault repositories for an older version.
+To do this, set ``$CENTOS_VERSION`` to the required version, e.g. ``7.6.1810``.
 
 Building the Image
 ------------------
@@ -37,6 +42,11 @@ A Mellanox OFED yum repository should be made available via HTTP and set via
 
 By default, the built image will be tagged as ``mlnx-ufm:latest``. To use a
 different tag, set ``$UFM_IMAGE_TAG``.
+
+The image uses a centos/systemd:latest base container image. If this does not
+match the kernel running on the host, the build will fail. In this case, you
+can configure Yum to use the CentOS Vault repositories for an older version.
+To do this, set ``$CENTOS_VERSION`` to the required version, e.g. ``7.6.1810``.
 
 Run the ``build.sh`` script to build a Docker image.
 

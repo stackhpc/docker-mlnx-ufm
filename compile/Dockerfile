@@ -13,10 +13,16 @@ ENV ufm_version=$ufm_version
 ARG ufm_tarball_url
 ENV ufm_tarball_url=$ufm_tarball_url
 
+# Configure CentOS repositories.
+ARG centos_version
+ENV centos_version=$centos_version
+ADD centos-repos.sh /
+RUN /centos-repos.sh
+
 ADD $ufm_tarball_url /
 
-RUN tar -xzf /ufm-${ufm_version}.tgz \
-    && rm /ufm-${ufm_version}.tgz
+RUN tar -xzf /$(basename $ufm_tarball_url) \
+    && rm /$(basename $ufm_tarball_url)
 
 # Buld UFM RPMs. Required if the following is seen during installation:
 # ERROR:
