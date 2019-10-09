@@ -68,6 +68,9 @@ RUN yum install -y \
     python-dateutil \
     && yum clean all
 
+#Hide default http welcome page
+RUN mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.bak.conf
+
 # Additional UFM dependencies found through testing.
 RUN yum install -y \
     net-tools \
