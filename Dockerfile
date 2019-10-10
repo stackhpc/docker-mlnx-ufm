@@ -72,10 +72,10 @@ RUN yum install -y \
 RUN mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.bak
 
 #Modify the config to allow us to restric access to root html directory
-COPY httpd/httpd.conf /etc/httpd/conf/
+ADD httpd/httpd.conf /etc/httpd/conf/
 
 #Add access list to root directory
-COPY httpd/.htaccess /var/www/html/
+ADD httpd/.htaccess /var/www/html/
 
 # Additional UFM dependencies found through testing.
 RUN yum install -y \
