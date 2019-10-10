@@ -71,6 +71,12 @@ RUN yum install -y \
 #Hide default http welcome page
 RUN mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.bak
 
+#Modify the config to allow us to restric access to root html directory
+COPY ./httpd/httpd.conf /etc/httpd/conf/
+
+#Add access list to root directory
+COPY ./httpd/.htaccess /var/www/html/
+
 # Additional UFM dependencies found through testing.
 RUN yum install -y \
     net-tools \
