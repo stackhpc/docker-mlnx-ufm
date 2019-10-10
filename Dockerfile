@@ -69,7 +69,7 @@ RUN yum install -y \
     && yum clean all
 
 #Hide default http welcome page
-RUN mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.bak.conf
+RUN mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.bak
 
 # Additional UFM dependencies found through testing.
 RUN yum install -y \
