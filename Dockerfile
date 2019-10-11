@@ -72,7 +72,7 @@ RUN yum install -y \
 RUN mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.bak
 
 #Modify the config to allow us to restric access to root html directory
-COPY httpd/httpd.conf /etc/httpd/conf/
+RUN sed -i '151s/.*/    AllowOverride All/' /etc/httpd/conf/httpd.conf
 
 #Add access list to root directory
 COPY httpd/.htaccess /var/www/html/
