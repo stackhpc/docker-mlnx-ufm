@@ -72,7 +72,11 @@ RUN yum install -y \
 RUN mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.bak
 
 #Modify the config to allow us to restric access to root html directory
-RUN sed -i '151s/.*/    AllowOverride All/' /etc/httpd/conf/httpd.conf
+#We need to search the config file for the relevant options and then
+#modify the second one, to minimize the possibility of a change to the
+#structure of the config file breaking this command
+RUN LN = grep -n "AllowOverride None" httpd.conf | sed '2q;d' | awk -F  ":" '{ print $1}' && \
+    sed -i '$LNs/.*/    AllowOverride All/' /etc/httpd/conf/httpd.conf 
 
 #Add access list to root directory
 COPY httpd/.htaccess /var/www/html/
