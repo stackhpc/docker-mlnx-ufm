@@ -75,7 +75,7 @@ RUN mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.bak
 #We need to search the config file for the relevant options and then
 #modify the second one, to minimize the possibility of a change to the
 #structure of the config file breaking this command
-RUN export LN=$(grep -n "AllowOverride None" httpd.conf | sed '2q;d' | awk -F  ":" '{ print $1}') && \
+RUN export LN=$(grep -n "AllowOverride None" /etc/httpd/conf/httpd.conf | sed '2q;d' | awk -F  ":" '{ print $1}') && \
     sed -i '$LNs/.*/    AllowOverride All/' /etc/httpd/conf/httpd.conf 
 
 #Add access list to root directory
